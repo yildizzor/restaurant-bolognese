@@ -1,0 +1,23 @@
+<a href="/"><button type="button">Go to Home Page</button></a><br />
+<a href="/drink"><button type="button">Go to Drink Page</button></a><br />
+
+<h2>Dish</h2>
+
+<div>
+
+  <p>
+    <a href="/dishes{{dish._id}}">{{dish.title}} </a>
+  </p>
+
+  <p> Ingredients:</p>
+  <ul>{{#each dish.ingredients}}
+
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+  <p>{{dish.cuisine}}</p>
+  <p>{{dish.dishType}}</p>
+
+  <img src="{{dish.image}}" alt="{{dish.title}} photo" />
+
+</div>
