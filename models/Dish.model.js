@@ -24,6 +24,7 @@ const dishSchema = new Schema(
     image: {
       type: String,
     },
+    price: { type: number },
   },
 
   {

@@ -9,8 +9,8 @@ const userSchema = new Schema(
       required: [true, "Username is required"],
       unique: true,
       match: [
-        /^[A-Za-z\d]{6,10}$/,
-        "Username should consist of min 6 max 10 characters",
+        /^[A-Za-z\d]{4,}$/,
+        "Username should consist of min 4 characters",
       ],
     },
     email: {
@@ -24,8 +24,8 @@ const userSchema = new Schema(
       type: String,
       required: true,
       match: [
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,10}$/,
-        "Password should consist of at least 1 lower, 1 upper, 1 digit, 1 any character and min 6 max 10 characters.",
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,}$/,
+        "Password should consist of at least 1 lower, 1 upper, 1 digit, 1 any character and min 6 characters.",
       ],
     },
 
@@ -34,13 +34,13 @@ const userSchema = new Schema(
       required: true,
     },
 
-    location: {
-      address: String,
-      city: String,
-    },
-    countryCode: {
+    address: String,
+
+    city: String,
+
+    zipCode: {
       type: String,
-      match: /^[A-Z]{6}$/,
+      match: /^\d{4}[A-Z]{2}$/,
     },
 
     phoneNr: {
@@ -55,10 +55,14 @@ const userSchema = new Schema(
 );
 
 userSchema.pre("save", function (next) {
-  const words = this.name.split(" "); // This is a middelware for database. It makes name and surname with uppercase for database.
-  this.name = words
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-    .join(" ");
+  const properties = ["name", "address", "city"];
+  for (element of properties) {
+    const words = this[element].split(" "); // This is a middelware for database. It makes name and surname with uppercase for database.
+    this[element] = words
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join(" ");
+  }
+
   next();
 });
 
