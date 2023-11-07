@@ -56,3 +56,10 @@ h1 {
   font-family: cursive;
   font-size: 25px;
 }
+
+
+.carousel-item img {
+
+object-fit: cover;
+height: 65vh;
+}
