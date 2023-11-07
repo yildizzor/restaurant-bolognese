@@ -1,12 +1,21 @@
 body {
-  padding: 50px;
+  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00b7ff;
+  color: #140ca9;
 }
 
 h1 {
   color: 15px;
+}
+
+.navbar-nav {
+  font-family: cursive;
+}
+
+.footer {
+
+  color: #1c3bd7; 
 }

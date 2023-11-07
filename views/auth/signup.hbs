@@ -1,73 +1,87 @@
 <h2>Welcome SignUp Page</h2>
 
-<div>
+<div class="w-25">
 
-  <form action="/signup" method="POST">
+  <form class="row g-4" action="/signup" method="POST">
+    <div class="col-12">
+      <input 
+      class="form-control form-control-lg"
+        id="name"
+        type="text"
+        name="name"
+        placeholder="Name Surname"
+        required
+      />
 
-    <input
-      id="user-name"
-      type="text"
-      name="username"
-      placeholder="Username"
-      required
-    />
-    <br />
-    <br />
+    </div>
 
-    <input
-      id="email-adres"
-      type="email"
-      name="email"
-      placeholder="Email Adress"
-      required
-    />
-    <br />
-    <br />
+    <div class="col-12">
+      <input
+      class="form-control form-control-lg"
+        id="user-name"
+        type="text"
+        name="username"
+        placeholder="Username"
+        required
+      />
 
-    <input
-      id="password"
-      type="password"
-      name="password"
-      placeholder="Password"
-      required
-    />
+    </div>
 
-    <br />
-    <br />
-    <input
-      id="name"
-      type="text"
-      name="name"
-      placeholder="Name Surname"
-      required
-    />
+    <div class="col-12">
+      <input
+      class="form-control form-control-lg"
+        id="email-adres"
+        type="email"
+        name="email"
+        placeholder="Email Adress"
+        required
+      />
 
-    <br />
-    <br />
-    <input id="address" type="text" name="address" placeholder="Address" />
+    </div>
 
-    <br />
-    <br />
-    <input id="city" type="text" name="city" placeholder="City" />
+    <div class="col-12">
+      <input
+      class="form-control form-control-lg"
+        id="password"
+        type="password"
+        name="password"
+        placeholder="Password"
+        required
+      />
 
-    <br />
-    <br />
+    </div>
 
-    <input id="zip-code" type="text" name="zipCode" placeholder="Zip Code" />
+    <div class="col-12">
+      <input class="form-control form-control-lg" id="address" type="text" name="address" placeholder="Address" />
 
-    <br />
-    <br />
+    </div>
 
-    <input
-      id="phone-number"
-      type="text"
-      name="phoneNr"
-      placeholder="Phone Number"
-    />
+    <div class="col-12">
 
-    <br />
-    <br />
-    <button>Submit</button>
+      <input class="form-control form-control-lg" id="city" type="text" name="city" placeholder="City" />
+
+    </div>
+
+    <div class="col-12">
+      <input class="form-control form-control-lg" id="zip-code" type="text" name="zipCode" placeholder="Zip Code" />
+
+    </div>
+
+    <div class="col-12">
+
+      <input class="form-control form-control-lg"
+        id="phone-number"
+        type="text"
+        name="phoneNr"
+        placeholder="Phone Number"
+      />
+    </div>
+
+
+    <div class= "col-12" "col-auto">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+
   </form>
 
   <div>

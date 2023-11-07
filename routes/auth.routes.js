@@ -2,6 +2,7 @@ const bcryptjs = require("bcryptjs");
 const router = require("express").Router();
 const saltRounds = 10;
 const User = require("../models/User.model");
+const mongoose = require("mongoose");
 
 const { isLoggedIn, isLoggedOut } = require("../middelwares/route-guard");
 
@@ -47,8 +48,18 @@ router.post("/signup", async (req, res, next) => {
     } else {
       res.render("auth/signup", { errorMessage: "Username already taken" });
     }
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    if (error instanceof mongoose.Error.ValidationError) {
+      res
+        .status(400)
+        .render("auth/signup", { errorMessage: error.errors.password.message });
+    } else if (error.code === 11000) {
+      res.status(500).render("auth/signup", {
+        errorMessage: "Username or email is already used.",
+      });
+    } else {
+      next(error);
+    }
   }
 });
 
