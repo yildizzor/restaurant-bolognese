@@ -1,92 +1,111 @@
-<h2>Welcome SignUp Page</h2>
+<div class="background-pizza">
 
-<div class="w-25">
+  <div class="w-25 ml-6 pt-5">
 
-  <form class="row g-4" action="/signup" method="POST">
-    <div class="col-12">
-      <input 
-      class="form-control form-control-lg"
-        id="name"
-        type="text"
-        name="name"
-        placeholder="Name Surname"
-        required
-      />
+    <form class="row g-4" action="/signup" method="POST">
+      <div class="col-12">
+        <input
+          class="form-control form-control-lg"
+          id="name"
+          type="text"
+          name="name"
+          placeholder="Name Surname"
+          required
+        />
 
+      </div>
+
+      <div class="col-12">
+        <input
+          class="form-control form-control-lg"
+          id="user-name"
+          type="text"
+          name="username"
+          placeholder="Username"
+          required
+        />
+
+      </div>
+
+      <div class="col-12">
+        <input
+          class="form-control form-control-lg"
+          id="email-adres"
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          required
+        />
+
+      </div>
+
+      <div class="col-12">
+        <input
+          class="form-control form-control-lg"
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+
+      </div>
+
+      <div class="col-12">
+        <input
+          class="form-control form-control-lg"
+          id="address"
+          type="text"
+          name="address"
+          placeholder="Address"
+        />
+
+      </div>
+
+      <div class="col-12">
+
+        <input
+          class="form-control form-control-lg"
+          id="city"
+          type="text"
+          name="city"
+          placeholder="City"
+        />
+
+      </div>
+
+      <div class="col-12">
+        <input
+          class="form-control form-control-lg"
+          id="zip-code"
+          type="text"
+          name="zipCode"
+          placeholder="Zip Code"
+        />
+
+      </div>
+
+      <div class="col-12">
+
+        <input
+          class="form-control form-control-lg"
+          id="phone-number"
+          type="text"
+          name="phoneNr"
+          placeholder="Phone Number"
+        />
+      </div>
+
+      <div class="col-12 col-auto">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+
+    </form>
+
+    <div>
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
     </div>
-
-    <div class="col-12">
-      <input
-      class="form-control form-control-lg"
-        id="user-name"
-        type="text"
-        name="username"
-        placeholder="Username"
-        required
-      />
-
-    </div>
-
-    <div class="col-12">
-      <input
-      class="form-control form-control-lg"
-        id="email-adres"
-        type="email"
-        name="email"
-        placeholder="Email Adress"
-        required
-      />
-
-    </div>
-
-    <div class="col-12">
-      <input
-      class="form-control form-control-lg"
-        id="password"
-        type="password"
-        name="password"
-        placeholder="Password"
-        required
-      />
-
-    </div>
-
-    <div class="col-12">
-      <input class="form-control form-control-lg" id="address" type="text" name="address" placeholder="Address" />
-
-    </div>
-
-    <div class="col-12">
-
-      <input class="form-control form-control-lg" id="city" type="text" name="city" placeholder="City" />
-
-    </div>
-
-    <div class="col-12">
-      <input class="form-control form-control-lg" id="zip-code" type="text" name="zipCode" placeholder="Zip Code" />
-
-    </div>
-
-    <div class="col-12">
-
-      <input class="form-control form-control-lg"
-        id="phone-number"
-        type="text"
-        name="phoneNr"
-        placeholder="Phone Number"
-      />
-    </div>
-
-
-    <div class= "col-12" "col-auto">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
-
-  </form>
-
-  <div>
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
   </div>
 </div>

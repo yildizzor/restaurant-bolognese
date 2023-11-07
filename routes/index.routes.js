@@ -20,4 +20,8 @@ router.get("/order", (req, res, next) => {
 router.get("/reservation", (req, res, next) => {
   res.render("reservation");
 });
+
+router.get("/menu", (req, res, next) => {
+  res.render("menu");
+});
 module.exports = router;

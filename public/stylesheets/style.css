@@ -16,6 +16,43 @@ h1 {
 }
 
 .footer {
+  color: #1c3bd7;
+}
 
-  color: #1c3bd7; 
+.ml-6 {
+  margin-left: 6rem;
+}
+
+.mt-6 {
+  margin-top: 6rem;
+}
+
+.nav-link:hover {
+  background-color: #f8f9fb;
+  border: 2px solid rgb(11, 43, 225);
+  border-radius: 25px;
+}
+
+.background-pizza {
+  width: 100vw;
+  height: 80vh;
+  background-size: cover;
+
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.6)
+    ),
+    url("/images/home/pizza.jpeg");
+}
+
+.about {
+  background-image: linear-gradient(
+    rgba(73, 114, 148, 0.9),
+    rgba(54, 163, 200, 0.1)
+  );
+
+  color: #111f60;
+  font-family: cursive;
+  font-size: 25px;
 }
