@@ -31,7 +31,7 @@ const userSchema = new Schema(
 
     name: {
       type: String,
-      required: true,
+      required: [true, "Name and Surname is required"],
     },
 
     address: String,

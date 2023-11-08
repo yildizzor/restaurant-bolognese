@@ -35,6 +35,8 @@ router.post("/login", async (req, res, next) => {
 router.get("/signup", (req, res) => res.render("auth/signup"));
 
 router.post("/signup", async (req, res, next) => {
+
+  
   try {
     let response = await User.findOne({ username: req.body.username });
     if (!response) {
