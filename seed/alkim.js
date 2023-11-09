@@ -55,7 +55,7 @@
             title: "Chicken Katsu Hero",
             ingredients: ["Chicken", "Onion", "Pickles", "Mayonnaise", "Egg","Olive Oil"],
             cuisine: "Japanese",
-            dishType: ["main_course"],
+            dishType: "main_course",
             price: 22.75,
             image: "/images/maincourses/chicken_katsu_hero.jpg"
        
@@ -256,7 +256,7 @@
 
 {
             title: "Coca Cola",
-            ingredients: "Null",
+            ingredients: "Not Available",
             cuisine: "Atlanta/Georgia",
             dishType: "drink",
             price: 7,
@@ -267,7 +267,7 @@
         
         {
             title: "Sparkling Water",
-            ingredients: "Null",
+            ingredients: "Not Available",
             cuisine: "England",
             dishType: "drink",
             price: 4,
