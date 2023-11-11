@@ -43,7 +43,7 @@
               style="color: #1c3bd7"
               href="/about"
             >About Us</a></li>
-          {{#unless isLoggedIn}}
+          {{#if isLoggedOut}}
             <li class="nav-item px-3"><a
                 class="nav-link"
                 style="color:#1c3bd7"
@@ -54,7 +54,7 @@
                 style="color:#1c3bd7"
                 href="/login"
               >Login</a></li>
-          {{/unless}}
+          {{/if}}
 
           {{#if isLoggedIn}}
             <li class="nav-item px-3"><a

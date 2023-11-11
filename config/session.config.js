@@ -25,9 +25,12 @@ module.exports = (app) => {
 
   app.use(function (req, res, next) {
     // Make `user` and `authenticated` available in templates
-    res.locals.isLoggedIn = req.session.currentUser !== undefined
-   
-    next()
-  })
-  
+    res.locals.isLoggedIn = true;
+    res.locals.isLoggedOut = true;
+
+    // res.locals.isLoggedIn = req.session.currentUser !== undefined
+    // res.locals.isLoggedOut = req.session.currentUser === undefined
+
+    next();
+  });
 };
