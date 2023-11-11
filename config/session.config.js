@@ -22,4 +22,12 @@ module.exports = (app) => {
       }),
     })
   );
+
+  app.use(function (req, res, next) {
+    // Make `user` and `authenticated` available in templates
+    res.locals.isLoggedIn = req.session.currentUser !== undefined
+   
+    next()
+  })
+  
 };

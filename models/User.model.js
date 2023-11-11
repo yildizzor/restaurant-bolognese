@@ -24,7 +24,8 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
       match: [
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,10}$/,
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,}$/,
+        
         "Password should consist of at least 1 lower, 1 upper, 1 digit, 1 any character and min 6 characters.",
       ],
     },

@@ -18,7 +18,11 @@ router.post("/login", async (req, res, next) => {
         res.render("auth/signup", { errorMessage: "User not found" });
       } else if (bcryptjs.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser;
-        res.render("auth/profile", { name: foundUser.name });
+        const isUserLoggedIn = req.session.currentUser !== undefined;
+        res.render("auth/profile", {
+          name: foundUser.name,
+          isLoggedIn: isUserLoggedIn,
+        });
       } else {
         res.render("auth/login", { errorMessage: "Incorrect password." });
       }
@@ -32,11 +36,9 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.get("/signup", (req, res) => res.render("auth/signup"));
+router.get("/signup", isLoggedOut, (req, res) => res.render("auth/signup"));
 
 router.post("/signup", async (req, res, next) => {
-
-  
   try {
     let response = await User.findOne({ username: req.body.username });
     if (!response) {
@@ -54,7 +56,7 @@ router.post("/signup", async (req, res, next) => {
     if (error instanceof mongoose.Error.ValidationError) {
       res
         .status(400)
-        .render("auth/signup", { errorMessage: error.errors.password.message });
+        .render("auth/signup", { errorMessage: error.errors.message });
     } else if (error.code === 11000) {
       res.status(500).render("auth/signup", {
         errorMessage: "Username or email is already used.",
@@ -65,7 +67,7 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-router.post("/logout", async (req, res, next) => {
+router.get("/logout", async (req, res, next) => {
   req.session.destroy((error) => {
     if (error) next(error);
 
