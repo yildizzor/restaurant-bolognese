@@ -299,7 +299,7 @@
             title: "Black Tea",
             ingredients: "Not Available",
             cuisine: "China",
-            dishType: "drink",
+    dishType: "drink",
             price: 5,
             image: "/images/drinks_photos/black_tea.jpg"
     
