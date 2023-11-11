@@ -16,6 +16,7 @@ const dishSchema = new Schema(
         "pizza",
         "soup",
         "snack",
+        "salad",
         "drink",
         "dessert",
         "other",
@@ -24,7 +25,7 @@ const dishSchema = new Schema(
     image: {
       type: String,
     },
-    price: { type: number },
+    price: { type: Number },
   },
 
   {
@@ -34,4 +35,4 @@ const dishSchema = new Schema(
 
 const Dish = mongoose.model("Dish", dishSchema);
 
-module.exports = Recipe;
+module.exports = Dish;

@@ -21,7 +21,7 @@ router.get("/reservation", (req, res, next) => {
   res.render("reservation");
 });
 
-router.get("/menu", (req, res, next) => {
-  res.render("menu");
-});
+// router.get("/menu", (req, res, next) => {
+//   res.render("menu", { dishes});
+// });
 module.exports = router;

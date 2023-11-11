@@ -1,33 +1,45 @@
+{{!-- <div class="row row-cols-1 row-cols-md-3 g-4">
+  {{#each dishes}}
+  {{> dishDrinkPartial this}}
+  {{/each}}
+</div> --}}
+
+
 <div class="m-5">
   <h3 style="color: #140ca9">Snack</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-  {{#each groupByDishType.snack}}
+  {{#each dishes.snack}}
   {{> dishDrinkPartial this}}
   {{/each}}
    </div>
 </div>
+
+
 <div class="m-5">
   <h3 style="color: #140ca9">Soup</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-  {{#each groupByDishType.soup}}
+  {{#each dishes.soup}}
   {{> dishDrinkPartial this}}
   {{/each}}
    </div>
 </div>
+
 
 <div class="m-5">
   <h3 style="color: #140ca9">Main Course</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-  {{#each groupByDishType.main_course}}
+  {{#each dishes.main_course}}
   {{> dishDrinkPartial this}}
   {{/each}}
    </div>
 </div>
 
+
+
 <div class="m-5">
   <h3 style="color: #140ca9">Pasta</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-  {{#each groupByDishType.pasta}}
+  {{#each dishes.pasta}}
   {{> dishDrinkPartial this}}
   {{/each}}
    </div>
@@ -36,29 +48,34 @@
 <div class="m-5">
   <h3 style="color: #140ca9">Pizza</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-  {{#each groupByDishType.pizza}}
+  {{#each dishes.pizza}}
   {{> dishDrinkPartial this}}
   {{/each}}
    </div>
 </div>
-
 
 <div class="m-5">
   <h3 style="color: #140ca9">Salad</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-  {{#each groupByDishType.salad}}
-  {{> dishDrinkPartial this}}
-  {{/each}}
-  </div>
-</div>
-
-<div class="m-5">
-  <h3 style="color: #140ca9">Desert</h3>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-  {{#each groupByDishType.dessert}}
+  {{#each dishes.salad}}
   {{> dishDrinkPartial this}}
   {{/each}}
    </div>
 </div>
 
-
+<div class="m-5">
+  <h3 style="color: #140ca9">Dessert</h3>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+  {{#each dishes.dessert}}
+  {{> dishDrinkPartial this}}
+  {{/each}}
+   </div>
+</div>
+<div class="m-5">
+  <h3 style="color: #140ca9">Drink</h3>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+  {{#each dishes.drink}}
+  {{> dishDrinkPartial this}}
+  {{/each}}
+   </div>
+</div>

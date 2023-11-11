@@ -1,16 +1,5 @@
-<a href="/"><button type="button">Go to Home Page</button></a><br />
-<a href="/dishes"><button type="button">Go to Dishes Page</button></a><br />
-
-<h2>Drink List</h2>
-
-<div>
-
+<div class="row row-cols-1 row-cols-md-3 g-4">
   {{#each drinks}}
-    <div>
-      <a href="/drink/{{this._id}}">{{this.title}}</a>
-      <img src="{{this.image}}" alt="{{this.title}} photo" />
-    </div>
-
+  {{> dishDrinkPartial this}}
   {{/each}}
-
 </div>

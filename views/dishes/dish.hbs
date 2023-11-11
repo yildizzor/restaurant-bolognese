@@ -1,23 +1,51 @@
-<a href="/"><button type="button">Go to Home Page</button></a><br />
-<a href="/drink"><button type="button">Go to Drink Page</button></a><br />
+{{!-- <div class="container d-flex justify-content-center">
 
-<h2>Dish</h2>
+  <div class="card border-0 justify-content-center" style="width: 50rem;">
+    <img
+      src="{{oneDish.image}}"
+      alt="{{oneDish.title}} photo"
+      class="card-img-top"
+    />
+    <div class="card-body">
+      <p class="card-title">{{oneDish.title}}</p>
+      <p> Ingredients:</p>
+      <ul>{{#each oneDish.ingredients}}
 
-<div>
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+      <p>Cuisine:{{oneDish.cuisine}}</p>
+      <p>Price: {{oneDish.price}} Euro</p>
 
-  <p>
-    <a href="/dishes{{dish._id}}">{{dish.title}} </a>
-  </p>
+    </div>
+  </div>
+</div> --}}
 
-  <p> Ingredients:</p>
-  <ul>{{#each dish.ingredients}}
+<div class="d-flex justify-content-center pt-5">
 
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
-  <p>{{dish.cuisine}}</p>
-  <p>{{dish.dishType}}</p>
+  <div class="card mb-3 border-0">
+    <div class="row g-0">
+      <div class="col-md-8">
+        <img
+          src="{{oneDish.image}}"
+          alt="{{oneDish.title}} photo"
+          class="img-fluid rounded-start oneImage"
+        />
+      </div>
+      <div class="col-md-4">
+        <div class="card-body">
+          <h1 class="card-title" style="color: #140ca9">{{oneDish.title}}</h1>
 
-  <img src="{{dish.image}}" alt="{{dish.title}} photo" />
+          <p class="card-text dish-more-info">Ingredients:</p>
+          <ul class="dish-more-info">{{#each oneDish.ingredients}}
 
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+          <p class="dish-more-info">Cuisine:{{oneDish.cuisine}}</p>
+          <p class="dish-more-info">Price: {{oneDish.price}} Euro</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

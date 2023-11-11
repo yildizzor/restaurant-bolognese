@@ -69,18 +69,36 @@ h1 {
 }
 
 .invalid-feedback {
-  color: rgb(1, 1, 36)!important;
+  color: rgb(1, 1, 36) !important;
 }
 
-
 .restaurant img {
-
   object-fit: cover;
 }
 
 #contact-information {
+  color: #140ca9;
+  font-size: x-large;
+  font-family: cursive;
+}
 
-color:#140ca9;
-font-size:x-large;
-font-family: cursive;
+
+
+.dish-more-info{
+  color: #140ca9 !important;
+  font-size: x-large !important;
+  font-family: cursive !important;
+
+}
+
+.oneImage {
+   height: 70vh !important;
+   width: auto !important;
+
+}
+
+.dishImages {
+
+  height: 30vh !important;
+ 
 }
