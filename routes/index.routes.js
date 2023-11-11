@@ -1,4 +1,5 @@
 const express = require("express");
+const { isLoggedIn } = require("../middelwares/route-guard");
 const router = express.Router();
 
 /* GET home page */
@@ -13,11 +14,11 @@ router.get("/contact", (req, res, next) => {
   res.render("contact");
 });
 
-router.get("/order", (req, res, next) => {
+router.get("/order", isLoggedIn, (req, res, next) => {
   res.render("order");
 });
 
-router.get("/reservation", (req, res, next) => {
+router.get("/reservation", isLoggedIn, (req, res, next) => {
   res.render("reservation");
 });
 

@@ -19,6 +19,10 @@ h1 {
   color: #1c3bd7;
 }
 
+footer {
+  height: 15vh;
+}
+
 .ml-6 {
   margin-left: 6rem;
 }
@@ -35,7 +39,7 @@ h1 {
 
 .background-pizza {
   width: 100vw;
-  height: 80vh;
+  height: 82vh;
   background-size: cover;
 
   background-repeat: no-repeat;
@@ -59,7 +63,7 @@ h1 {
 
 .carousel-item img {
   object-fit: cover;
-  height: 65vh;
+  height: 67vh;
 }
 
 .card-img-top {
@@ -82,23 +86,17 @@ h1 {
   font-family: cursive;
 }
 
-
-
-.dish-more-info{
+.dish-more-info {
   color: #140ca9 !important;
   font-size: x-large !important;
   font-family: cursive !important;
-
 }
 
 .oneImage {
-   height: 70vh !important;
-   width: auto !important;
-
+  height: 70vh !important;
+  width: auto !important;
 }
 
 .dishImages {
-
   height: 30vh !important;
- 
 }

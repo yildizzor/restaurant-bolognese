@@ -18,11 +18,11 @@ router.post("/login", async (req, res, next) => {
         res.render("auth/signup", { errorMessage: "User not found" });
       } else if (bcryptjs.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser;
-        const isUserLoggedIn = req.session.currentUser !== undefined;
-        res.render("auth/profile", {
-          name: foundUser.name,
-          isLoggedIn: isUserLoggedIn,
-        });
+
+        res.locals.isLoggedIn = foundUser !== undefined;
+        res.locals.isLoggedOut = foundUser === undefined;
+
+        res.render("auth/profile", { name: foundUser.name });
       } else {
         res.render("auth/login", { errorMessage: "Incorrect password." });
       }
