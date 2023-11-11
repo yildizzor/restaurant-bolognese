@@ -233,6 +233,25 @@
 
         }
         ,
+{
+            title: "Baklava",
+            ingredients: ["Phyllo Dough", "Sugar", "Walnut","Cinnamon","Eggs","Water","Lemon"],
+            cuisine: "Turkey",
+            dishType: "dessert",
+            price: 19.00,
+            image: "/images/dessert_photos/baklava.jpg"
+    
+
+        }
+        ,
+
+
+
+
+
+
+
+
         {
             title: "Cabernet Sauvignon",
             ingredients: "Red Grapes",
@@ -276,7 +295,48 @@
 
         },
 
+{
+            title: "Black Tea",
+            ingredients: "Not Available",
+            cuisine: "China",
+            dishType: "drink",
+            price: 5,
+            image: "/images/drinks_photos/black_tea.jpg"
+    
 
+        },
+
+
+        {
+            title: "Chamomile Tea",
+            ingredients: "Not Available",
+            cuisine: "Egypt",
+            dishType: "drink",
+            price: 5,
+            image: "/images/drinks_photos/chamomile_tea.jpg"
+    
+
+        },
+{
+            title: "Americano Coffee",
+            ingredients: "Not Available",
+            cuisine: "Italy",
+            dishType: "drink",
+            price: 5,
+            image: "/images/drinks_photos/americano_coffee.jpg"
+    
+
+        },
+{
+            title: "Latte Coffee",
+            ingredients: "Not Available",
+            cuisine: "Italy",
+            dishType: "drink",
+            price: 5,
+            image: "/images/drinks_photos/latte_coffee.jpg"
+    
+
+        },
 
 
 
