@@ -248,10 +248,6 @@
 
 
 
-
-
-
-
         {
             title: "Cabernet Sauvignon",
             ingredients: "Red Grapes",
@@ -299,7 +295,7 @@
             title: "Black Tea",
             ingredients: "Not Available",
             cuisine: "China",
-    dishType: "drink",
+             dishType: "drink",
             price: 5,
             image: "/images/drinks_photos/black_tea.jpg"
     
@@ -309,7 +305,7 @@
 
         {
             title: "Chamomile Tea",
-            ingredients: "Not Available",
+            ingredients: "Chamomile",
             cuisine: "Egypt",
             dishType: "drink",
             price: 5,
@@ -319,7 +315,7 @@
         },
 {
             title: "Americano Coffee",
-            ingredients: "Not Available",
+            ingredients: "Coffee",
             cuisine: "Italy",
             dishType: "drink",
             price: 5,
@@ -329,7 +325,7 @@
         },
 {
             title: "Latte Coffee",
-            ingredients: "Not Available",
+            ingredients: "Coffee and Milk",
             cuisine: "Italy",
             dishType: "drink",
             price: 5,
@@ -338,7 +334,52 @@
 
         },
 
+ {
+            title: "Bean Salad",
+            ingredients: ["Onion", "Green Pepper", "Celery","Olive Oil","Beans","Parsley","Salt","Red Wine Vinegar"],
+            cuisine: "The United Kingdom",
+            dishType: "salad",
+            price: 14.00,
+            image: "/images/salad_photos/bean_salad.jpg"
+    
 
+        }
+       ,
+{
+            title: "Caesar Salad",
+            ingredients: ["Parmesan", "Crouton", "Lemon","Romaine Lettuce","Black Pepper","Dijon Mustard","Garlic","Egg"],
+            cuisine: "Mexico",
+            dishType: "salad",
+            price: 14.00,
+            image: "/images/salad_photos/caesar_salad.jpg"
+    
+
+        }
+       ,
+       
+       {
+            title: "Cobb Salad",
+            ingredients: ["Avocado", "Blue cheese", "Bacon","Boiled egg","Black Pepper","Chicken","Tomatoes","Chives"],
+            cuisine: "California",
+            dishType: "salad",
+            price: 14.00,
+            image: "/images/salad_photos/cobb_salad.jpg"
+    
+
+        }
+       ,
+
+{
+            title: "Four Seasons Salad",
+            ingredients: ["Balsamic Vinegar", "Olive Oil", "Dried Oragano","Red Pepper Flakes","Black Pepper","Lettuce","Pound Mushrooms","Fresh Basil"],
+            cuisine: "Chinese",
+            dishType: "salad",
+            price: 14.00,
+            image: "/images/salad_photos/four_seasons_salad.jpg"
+    
+
+        }
+       ,
 
 
 
