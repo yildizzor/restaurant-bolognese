@@ -3,15 +3,9 @@ const { Schema, model } = require("mongoose");
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema(
   {
-    username: {
+    name: {
       type: String,
-      trim: true,
-      required: [true, "Username is required"],
-      unique: true,
-      match: [
-        /^[A-Za-z\d]{4,}$/,
-        "Username should consist of min 4 characters",
-      ],
+      required: [true, "Name and Surname is required"],
     },
     email: {
       type: String,
@@ -25,14 +19,9 @@ const userSchema = new Schema(
       required: [true, "Password is required"],
       match: [
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,}$/,
-        
+
         "Password should consist of at least 1 lower, 1 upper, 1 digit, 1 any character and min 6 characters.",
       ],
-    },
-
-    name: {
-      type: String,
-      required: [true, "Name and Surname is required"],
     },
 
     address: String,

@@ -1,0 +1,18 @@
+<div class="user-information">
+<div >
+  {{> orderProfilePartial currentUser}}
+</div>
+<div >
+    <p>Order Information</p>
+    <div>
+      <p>Order Date: {{order.createdAt}}</p>
+      <p>Order Dishes:</p>
+{{#each order.items}}
+      <p>{{this.productId.title}}- {{this.quantity}}Piece- {{this.price}}Euro</p>
+{{/each}}
+      <p>Order Total Price: {{order.total}}Euro</p>
+    </div>
+</div>
+</div>
+
+

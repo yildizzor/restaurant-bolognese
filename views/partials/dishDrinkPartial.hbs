@@ -8,6 +8,10 @@
     <div class="card-body">
       <h5 class="card-title">{{this.title}}</h5>
       <a href="/dish/{{this._id}}" class="card-link">More Info</a>
+      <form method="POST" action="/order/item/{{this._id}}"><button
+          class="card-link btn btn-link"
+        >Add Cart</button></form>
     </div>
+
   </div>
 </div>

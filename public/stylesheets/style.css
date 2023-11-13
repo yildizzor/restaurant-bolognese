@@ -100,3 +100,9 @@ footer {
 .dishImages {
   height: 30vh !important;
 }
+
+.user-information {
+  color: #140ca9;
+  font-size: x-large;
+  font-family: cursive;
+}

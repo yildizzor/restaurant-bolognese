@@ -22,7 +22,7 @@ router.post("/login", async (req, res, next) => {
         res.locals.isLoggedIn = foundUser !== undefined;
         res.locals.isLoggedOut = foundUser === undefined;
 
-        res.render("auth/profile", { name: foundUser.name });
+        res.render("auth/profile", { currentUser: foundUser });
       } else {
         res.render("auth/login", { errorMessage: "Incorrect password." });
       }
@@ -76,8 +76,9 @@ router.get("/logout", async (req, res, next) => {
 });
 
 router.get("/profile", isLoggedIn, (req, res) => {
-  const user = req.session.currentUser;
-  res.render("auth/profile", { name: user.name });
+  const currentUser = req.session.currentUser;
+
+  res.render("auth/profile", { currentUser });
 });
 
 module.exports = router;
