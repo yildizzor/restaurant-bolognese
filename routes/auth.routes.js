@@ -4,6 +4,8 @@ const saltRounds = 10;
 const User = require("../models/User.model");
 const mongoose = require("mongoose");
 
+const uploader = require("../middelwares/cloudinary.config");
+
 const { isLoggedIn, isLoggedOut } = require("../middelwares/route-guard");
 
 router.get("/login", isLoggedOut, (req, res) => res.render("auth/login"));
@@ -38,15 +40,22 @@ router.post("/login", async (req, res, next) => {
 
 router.get("/signup", isLoggedOut, (req, res) => res.render("auth/signup"));
 
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", uploader.single("imageUrl"), async (req, res, next) => {
   try {
     let response = await User.findOne({ username: req.body.username });
     if (!response) {
       const salt = bcryptjs.genSaltSync(saltRounds);
       const hashedPassword = bcryptjs.hashSync(req.body.password, salt);
+
+      let profilePhoto;
+      if (req.file) {
+        profilePhoto = req.file.path;
+        console.log(profilePhoto);
+      }
       const newUser = await User.create({
         ...req.body,
         password: hashedPassword,
+        imageUrl: profilePhoto,
       });
       res.redirect("/profile");
     } else {

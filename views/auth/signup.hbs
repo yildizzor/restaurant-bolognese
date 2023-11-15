@@ -1,5 +1,8 @@
 <div class="background-pizza">
+<div>
 
+ 
+</div>
   <div class="w-25 ml-6 pt-5">
 
     <form
@@ -7,7 +10,18 @@
       novalidate
       action="/signup"
       method="POST"
+      enctype="multipart/form-data"
     >
+<div class="col-12">
+
+        <input
+          class="form-control form-control-lg"
+          id="name"
+          type="file"
+          name="imageUrl"
+          accept="image/png, image/jpg"
+        />
+</div>
       <div class="col-12">
         <input
           class="form-control form-control-lg"

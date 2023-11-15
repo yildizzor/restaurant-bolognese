@@ -23,6 +23,11 @@ const userSchema = new Schema(
         "Password should consist of at least 1 lower, 1 upper, 1 digit, 1 any character and min 6 characters.",
       ],
     },
+    imageUrl: {
+
+      type: String,
+
+    },
 
     address: String,
 
