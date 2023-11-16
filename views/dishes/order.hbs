@@ -1,18 +1,54 @@
-<div class="user-information">
-<div >
-  {{> orderProfilePartial currentUser}}
-</div>
-<div >
-    <p>Order Information</p>
-    <div>
-      <p>Order Date: {{order.createdAt}}</p>
-      <p>Order Dishes:</p>
-{{#each order.items}}
-      <p>{{this.productId.title}}- {{this.quantity}}Piece- {{this.price}}Euro</p>
-{{/each}}
-      <p>Order Total Price: {{order.total}}Euro</p>
+<div class="order-information">
+  <div>
+    {{>orderProfilePartial currentUser}}
+  </div>
+  <div class="container">
+    <h5>Order Information</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each order.items}}
+          <tr>
+            <th scope="row">{{@index}}</th>
+            <td>{{this.productId.title}}</td>
+            <td>{{this.price}}-Euro</td>
+            <td><div class="btn-group" role="group">
+                <form method="POST" action="/order/item/{{this.productId._id}}">
+                  <input type="hidden" name="currentPage" value="{{../currentRoute}}">
+                  <button class="btn btn-secondary">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </form>
+                <span class="btn btn-light">{{this.quantity}}</span>
+                <form method="POST" action="/order/item/{{this.productId._id}}">
+                  <input type="hidden" name="currentPage" value="{{../currentRoute}}">
+                  <button class="btn btn-secondary">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                </form>
+              </div></td>
+            <td>{{this.subTotal}}-Euro</td>
+            <td>
+              <button class="btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="text-end">
+      <h4>Total:{{order.total}}-Euro</h4>
+      <button class="btn btn-primary">Submit Order</button>
     </div>
+  </div>
 </div>
-</div>
-
-

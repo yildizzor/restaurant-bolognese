@@ -42,7 +42,7 @@ router.get("/signup", isLoggedOut, (req, res) => res.render("auth/signup"));
 
 router.post("/signup", uploader.single("imageUrl"), async (req, res, next) => {
   try {
-    let response = await User.findOne({ username: req.body.username });
+    let response = await User.findOne({ email: req.body.email });
     if (!response) {
       const salt = bcryptjs.genSaltSync(saltRounds);
       const hashedPassword = bcryptjs.hashSync(req.body.password, salt);
@@ -67,8 +67,9 @@ router.post("/signup", uploader.single("imageUrl"), async (req, res, next) => {
         .status(400)
         .render("auth/signup", { errorMessage: error.errors.message });
     } else if (error.code === 11000) {
+      console.log(error);
       res.status(500).render("auth/signup", {
-        errorMessage: "Username or email is already used.",
+        errorMessage: "Email is already used.",
       });
     } else {
       next(error);

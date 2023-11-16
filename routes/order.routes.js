@@ -22,6 +22,8 @@ router.post(
   "/order/item/:id",
   /*isLoggedIn,*/ async (req, res, next) => {
     const { id } = req.params;
+    const { currentPage } = req.body;
+
     try {
       const userId = req.session.currentUser.id;
 
@@ -30,7 +32,7 @@ router.post(
 
       const order = await orderController.addItem(id);
 
-      res.redirect("/menu");
+      res.redirect(currentPage);
     } catch (error) {
       next(error);
     }

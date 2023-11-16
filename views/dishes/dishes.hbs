@@ -2,7 +2,7 @@
   <h4 style="color: #140ca9">Snack</h4>
   <div class="row row-cols-1 row-cols-md-3 g-4">
   {{#each groupByDishType.snack}}
-  {{> dishDrinkPartial this}}
+  {{> dishDrinkPartial dish=this currentRoute=../currentRoute}}
   {{/each}}
    </div>
 </div>
@@ -10,7 +10,7 @@
   <h4 style="color: #140ca9">Soup</h4>
   <div class="row row-cols-1 row-cols-md-3 g-4">
   {{#each groupByDishType.soup}}
-  {{> dishDrinkPartial this}}
+  {{> dishDrinkPartial dish=this currentRoute=../currentRoute}}
   {{/each}}
    </div>
 </div>
@@ -19,7 +19,7 @@
   <h4 style="color: #140ca9">Main Course</h4>
   <div class="row row-cols-1 row-cols-md-3 g-4">
   {{#each groupByDishType.main_course}}
-  {{> dishDrinkPartial this}}
+  {{> dishDrinkPartial dish=this currentRoute=../currentRoute}}
   {{/each}}
    </div>
 </div>
@@ -28,7 +28,7 @@
   <h4 style="color: #140ca9">Pasta</h4>
   <div class="row row-cols-1 row-cols-md-3 g-4">
   {{#each groupByDishType.pasta}}
-  {{> dishDrinkPartial this}}
+  {{> dishDrinkPartial dish=this currentRoute=../currentRoute}}
   {{/each}}
    </div>
 </div>
@@ -37,7 +37,7 @@
   <h4 style="color: #140ca9">Pizza</h4>
   <div class="row row-cols-1 row-cols-md-3 g-4">
   {{#each groupByDishType.pizza}}
-  {{> dishDrinkPartial this}}
+  {{> dishDrinkPartial dish=this currentRoute=../currentRoute}}
   {{/each}}
    </div>
 </div>
@@ -47,7 +47,7 @@
   <h4 style="color: #140ca9">Salad</h4>
   <div class="row row-cols-1 row-cols-md-3 g-4">
   {{#each groupByDishType.salad}}
-  {{> dishDrinkPartial this}}
+  {{> dishDrinkPartial dish=this currentRoute=../currentRoute}}
   {{/each}}
   </div>
 </div>
@@ -56,7 +56,7 @@
   <h4 style="color: #140ca9">Desert</h4>
   <div class="row row-cols-1 row-cols-md-3 g-4">
   {{#each groupByDishType.dessert}}
-  {{> dishDrinkPartial this}}
+  {{> dishDrinkPartial dish=this currentRoute=../currentRoute}}
   {{/each}}
    </div>
 </div>

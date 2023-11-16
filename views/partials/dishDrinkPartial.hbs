@@ -1,16 +1,17 @@
 <div class="col dish-more-info">
   <div class="card border-info">
     <img
-      src="{{this.image}}"
+      src="{{dish.image}}"
       class="card-img-top dishImages"
-      alt="{{this.title}}"
+      alt="{{dish.title}}"
     />
     <div class="card-body">
-      <h5 class="card-title">{{this.title}}</h5>
-      <a href="/dish/{{this._id}}" class="card-link">More Info</a>
-      <form method="POST" action="/order/item/{{this._id}}"><button
-          class="card-link btn btn-link"
-        >Add Cart</button></form>
+      <h5 class="card-title">{{dish.title}}</h5>
+      <a href="/dish/{{dish._id}}" class="card-link">More Info</a>
+      <form method="POST" action="/order/item/{{dish._id}}">
+        <input type="hidden" name="currentPage" value="{{currentRoute}}" />
+        <button class="card-link btn btn-link">Add Cart</button>
+      </form>
     </div>
 
   </div>

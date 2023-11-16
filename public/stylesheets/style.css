@@ -106,3 +106,9 @@ footer {
   font-size: x-large;
   font-family: cursive;
 }
+
+.order-information {
+  color: #0e0d28;
+  font-size:medium;
+  font-family:'Times New Roman', Times, serif;
+}

@@ -13,7 +13,7 @@ module.exports = (app) => {
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
-        maxAge: 60000,
+        maxAge: 60000000,
       },
       store: MongoStore.create({
         mongoUrl:
@@ -28,8 +28,9 @@ module.exports = (app) => {
     // res.locals.isLoggedIn = true;
     // res.locals.isLoggedOut = true;
 
-    res.locals.isLoggedIn = req.session.currentUser !== undefined
-    res.locals.isLoggedOut = req.session.currentUser === undefined
+    res.locals.isLoggedIn = req.session.currentUser !== undefined;
+    res.locals.isLoggedOut = req.session.currentUser === undefined;
+    res.locals.currentRoute = req.url;
 
     next();
   });

@@ -14,8 +14,8 @@ class OrderControler {
 
   async addItem(itemId) {
     const order = await this.unSubmitOrder();
-
     const item = await Dish.findById(itemId);
+    console.log(item)
     order.items.forEach((elem) => console.log(elem.productId));
     const indexFound = order.items.findIndex(
       (item) => item.productId.id === itemId
