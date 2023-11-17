@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 let itemSchema = new Schema(
   {
-    productId: {
+    product: {
       type: Schema.Types.ObjectId,
       ref: "Dish",
     },
@@ -10,10 +10,6 @@ let itemSchema = new Schema(
       type: Number,
       required: true,
       min: [1, "Quantity can not be less then 1."],
-    },
-    price: {
-      type: Number,
-      required: true,
     },
     subTotal: {
       type: Number,

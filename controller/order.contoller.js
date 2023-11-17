@@ -1,7 +1,8 @@
 const Order = require("../models/Order.model");
 const Dish = require("../models/Dish.model");
+const { CustomError } = require("../error-handling/custom.errors");
 
-class OrderControler {
+class OrderController {
   constructor(userId) {
     this.userId = userId;
   }
@@ -15,10 +16,8 @@ class OrderControler {
   async addItem(itemId) {
     const order = await this.unSubmitOrder();
     const item = await Dish.findById(itemId);
-    console.log(item)
-    order.items.forEach((elem) => console.log(elem.productId));
     const indexFound = order.items.findIndex(
-      (item) => item.productId.id === itemId
+      (item) => item.product.id === itemId
     );
 
     if (indexFound !== -1) {
@@ -26,12 +25,12 @@ class OrderControler {
       order.items[indexFound].subTotal =
         order.items[indexFound].quantity * item.price;
     } else {
-      order.items.push({
-        productId: itemId,
+      const newItem = {
+        product: itemId,
         quantity: 1,
-        price: item.price,
         subTotal: item.price,
-      });
+      };
+      order.items.push(newItem);
     }
     order.total = order.items
       .map((item) => item.subTotal)
@@ -41,7 +40,55 @@ class OrderControler {
     return order;
   }
 
-  async removeItem(item, quantity = 1) {}
+  async removeItem(itemId, quantity = 1) {
+    const order = await this.unSubmitOrder();
+    const item = await Dish.findById(itemId);
+    const indexFound = order.items.findIndex(
+      (item) => item.product.id === itemId
+    );
+
+    if (indexFound !== -1) {
+      if (order.items[indexFound].quantity > 1) {
+        order.items[indexFound].quantity -= 1;
+        order.items[indexFound].subTotal =
+          order.items[indexFound].quantity * item.price;
+      }
+    } else {
+      throw new CustomError("Item doesn't exist in order!");
+    }
+
+    order.total = order.items
+      .map((item) => item.subTotal)
+      .reduce((sum, element) => sum + element);
+
+    await order.save();
+    return order;
+  }
+
+  async deleteAllItem(itemId) {
+    const order = await this.unSubmitOrder();
+    const item = await Dish.findById(itemId);
+    const indexFound = order.items.findIndex(
+      (item) => item.product.id === itemId
+    );
+
+    if (indexFound !== -1) {
+      order.items.splice(indexFound, 1);
+    } else {
+      throw new CustomError("Item doesn't exist in order!");
+    }
+
+    if (order.items.length > 0) {
+      order.total = order.items
+        .map((item) => item.subTotal)
+        .reduce((sum, element) => sum + element);
+    } else {
+      order.total = 0;
+    }
+
+    await order.save();
+    return order;
+  }
 
   async cancelOrder(orderId) {
     const foundOrder = await Order.findById(orderId);
@@ -52,23 +99,34 @@ class OrderControler {
   }
 
   async unSubmitOrder() {
+    const status = "Ordering";
     let order = await Order.findOne({
       userId: this.userId,
-      status: "Ordering",
-    })
-    .populate("items.productId");
+      status: status,
+    }).populate("items.product");
 
     if (!order) {
       order = await this.create({
         userId: this.userId,
-        status: "Ordering",
+        status: status,
         products: [],
       });
     }
     return order;
   }
 
+  async submitOrder() {
+    const order = await this.unSubmitOrder();
+    if (order.items.length > 0) {
+      order.status = "Pending";
+      order.date = Date.now();
+      await order.save();
+      return order;
+    }
+    return;
+  }
+
   async getOrderHistory() {}
 }
 
-module.exports = OrderControler;
+module.exports = OrderController;

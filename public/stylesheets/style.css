@@ -109,6 +109,12 @@ footer {
 
 .order-information {
   color: #0e0d28;
-  font-size:medium;
-  font-family:'Times New Roman', Times, serif;
+  font-size: medium;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.order-message {
+  color: rgb(190 53 159);
+  font-size: medium;
+  font-family: "Times New Roman", Times, serif;
 }

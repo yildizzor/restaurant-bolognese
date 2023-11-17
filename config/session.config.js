@@ -1,5 +1,6 @@
 const MongoStore = require("connect-mongo");
 const session = require("express-session");
+const OrderController = require("../controller/order.contoller");
 
 module.exports = (app) => {
   app.set("trust proxy", 1);
@@ -23,14 +24,17 @@ module.exports = (app) => {
     })
   );
 
-  app.use(function (req, res, next) {
-    // Make `user` and `authenticated` available in templates
-    // res.locals.isLoggedIn = true;
-    // res.locals.isLoggedOut = true;
-
+  app.use(async function (req, res, next) {
     res.locals.isLoggedIn = req.session.currentUser !== undefined;
     res.locals.isLoggedOut = req.session.currentUser === undefined;
     res.locals.currentRoute = req.url;
+    if (res.locals.isLoggedIn) {
+      const orderController = new OrderController(req.session.currentUser.id);
+      const order = await orderController.unSubmitOrder();
+      res.locals.orderItemsCount = order.items.length
+        ? `${order.items.length}`
+        : "";
+    }
 
     next();
   });

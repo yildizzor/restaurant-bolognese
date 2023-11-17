@@ -1,9 +1,11 @@
 <div class="order-information">
-  <div>
-    {{>orderProfilePartial currentUser}}
-  </div>
   <div class="container">
+    <div class="user-information">
+    {{currentUser.name}}
+  </div>
     <h5>Order Information</h5>
+    <i class="fa fa-cart-shopping"></i>
+    
     <table class="table">
       <thead>
         <tr>
@@ -11,7 +13,7 @@
           <th scope="col">Product</th>
           <th scope="col">Price</th>
           <th scope="col">Quantity</th>
-          <th scope="col">Total</th>
+          <th scope="col">Product Total</th>
           <th scope="col">Delete</th>
         </tr>
       </thead>
@@ -19,36 +21,47 @@
         {{#each order.items}}
           <tr>
             <th scope="row">{{@index}}</th>
-            <td>{{this.productId.title}}</td>
-            <td>{{this.price}}-Euro</td>
+            <td>{{this.product.title}}</td>
+            <td>{{this.product.price}}</td>
             <td><div class="btn-group" role="group">
-                <form method="POST" action="/order/item/{{this.productId._id}}">
+                <form method="POST" action="/order/item/remove/{{this.product._id}}">
                   <input type="hidden" name="currentPage" value="{{../currentRoute}}">
                   <button class="btn btn-secondary">
                     <i class="fa fa-minus"></i>
                   </button>
                 </form>
                 <span class="btn btn-light">{{this.quantity}}</span>
-                <form method="POST" action="/order/item/{{this.productId._id}}">
+                <form method="POST" action="/order/item/{{this.product._id}}">
                   <input type="hidden" name="currentPage" value="{{../currentRoute}}">
                   <button class="btn btn-secondary">
                     <i class="fa fa-plus"></i>
                   </button>
                 </form>
               </div></td>
-            <td>{{this.subTotal}}-Euro</td>
+            <td>{{this.subTotal}}</td>
             <td>
+              <form method="POST" action="/order/item/delete/{{this.product._id}}">
+                  <input type="hidden" name="currentPage" value="{{../currentRoute}}">
               <button class="btn btn-danger">
                 <i class="fa fa-trash"></i>
               </button>
+                </form>
             </td>
           </tr>
         {{/each}}
       </tbody>
     </table>
     <div class="text-end">
-      <h4>Total:{{order.total}}-Euro</h4>
+      <h4>Order Total:{{order.total}}-Euro</h4>
+
+    <form method="POST" action="/order">
       <button class="btn btn-primary">Submit Order</button>
+      </form>
     </div>
+    {{#if message}}
+  <div class="order-message">
+<h2>{{message}}</h2>
+  </div>
+   {{/if}}
   </div>
 </div>
