@@ -23,9 +23,10 @@ let itemSchema = new Schema(
 
 const orderSchema = new Schema(
   {
-    userId: {
+    user: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
     date: {
       type: Date,

@@ -29,7 +29,7 @@ module.exports = (app) => {
     res.locals.isLoggedOut = req.session.currentUser === undefined;
     res.locals.currentRoute = req.url;
     if (res.locals.isLoggedIn) {
-      const orderController = new OrderController(req.session.currentUser.id);
+      const orderController = new OrderController(req.session.currentUser._id);
       const order = await orderController.unSubmitOrder();
       res.locals.orderItemsCount = order.items.length
         ? `${order.items.length}`

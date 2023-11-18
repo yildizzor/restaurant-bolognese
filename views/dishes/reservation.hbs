@@ -4,10 +4,65 @@
     <p>Email: {{currentUser.email}}</p>
     <P>Phone Number: {{currentUser.phoneNr}}</P>
   </div>
-  <div>
-    <p>Reservation Information</p>
-    <p>Date:{{currentUser}}</p>
-    <p>Time:{{currentUser}}</p>
-    <p>Number of People:{{currentUser}}</p>
-  </div>
+</div>
+
+<div class="container">
+  <form method="POST" action="/reservation">
+    <h5>Reservation Information</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Person</th>
+        
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><input
+              id="reservation-date"
+              type="date"
+              name="date"
+              required
+            /></td>
+          <td><input
+              list="times"
+              type="time"
+              name="time"
+              step="1800"
+              min="17:00"
+              max="21:00"
+              required
+            />
+            <datalist id="times">
+              <option value="17:00:00">
+              <option value="17:30:00">
+              <option value="18:00:00">
+              <option value="18:30:00">
+              <option value="19:00:00">
+              <option value="19:30:00">
+              <option value="20:00:00">
+              <option value="20:30:00">
+              <option value="21:00:00">
+          </datalist>
+          </td>
+          <td>
+            <input type="number" name="person" min="0" max="50"/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-end">
+      <button class="btn btn-primary">Make Reservation</button>
+    </div>
+  </form>
+  {{#if message}}
+    <div class="order-message">
+      <h2>{{message}}</h2>
+      <img src="/images/submit/Reservation.gif" alt="Reservation">
+    </div>
+  {{/if}}
 </div>

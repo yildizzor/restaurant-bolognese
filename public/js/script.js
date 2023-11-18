@@ -24,4 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     });
   })();
+
+  (function () {
+    // Get the current date
+    const currentDate = new Date();
+
+    // Set the minimum date to the current date
+    const minDate = currentDate.toISOString().split("T")[0];
+    document.getElementById("reservation-date").min = minDate;
+
+    // Set the maximum date to 30 days from the current date
+    currentDate.setDate(currentDate.getDate() + 30);
+    const maxDate = currentDate.toISOString().split("T")[0];
+    document.getElementById("reservation-date").max = maxDate;
+  })();
 });

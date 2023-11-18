@@ -1,5 +1,9 @@
-<div><img src="{{currentUser.imageUrl}}" alt="profile-photo"/></div>
+<div class="container pt-5">
 <div>
-  {{> orderProfilePartial currentUser}}
+  <img class="rounded-circle shadow-4-strong" src="{{currentUser.imageUrl}}" alt="profile-photo" width="250"/>
+  </div>
+<div class="pt-3">
+  {{> profilePartial currentUser}}
 </div>
 
+</div>

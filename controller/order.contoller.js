@@ -101,17 +101,18 @@ class OrderController {
   async unSubmitOrder() {
     const status = "Ordering";
     let order = await Order.findOne({
-      userId: this.userId,
+      user: this.userId,
       status: status,
     }).populate("items.product");
 
     if (!order) {
       order = await this.create({
-        userId: this.userId,
+        user: this.userId,
         status: status,
         products: [],
       });
     }
+    console.log(order);
     return order;
   }
 
