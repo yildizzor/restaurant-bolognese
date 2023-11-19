@@ -45,6 +45,9 @@ router.post("/login", async (req, res, next) => {
 router.get("/signup", isLoggedOut, (req, res) => res.render("auth/signup"));
 
 router.post("/signup", uploader.single("imageUrl"), async (req, res, next) => {
+  const errors = {};
+  const data = req.body;
+
   try {
     let response = await User.findOne({ email: req.body.email });
     if (!response) {
@@ -62,19 +65,20 @@ router.post("/signup", uploader.single("imageUrl"), async (req, res, next) => {
       });
       res.redirect("/login");
     } else {
-      res.render("auth/signup", { errorMessage: "Username already taken" });
+      errors.email = "Email is already taken";
+      res.render("auth/signup", { errors, data });
     }
-  } catch (error) {
-    if (error instanceof mongoose.Error.ValidationError) {
-      res
-        .status(400)
-        .render("auth/signup", { errorMessage: error.errors.message });
-    } else if (error.code === 11000) {
-      res.status(500).render("auth/signup", {
-        errorMessage: "Email is already used.",
+  } catch (err) {
+    if (err instanceof mongoose.Error.ValidationError) {
+      Object.keys(err.errors).forEach((key) => {
+        errors[key] = err.errors[key].message;
       });
+      res.status(400).render("auth/signup", { data, errors });
+    } else if (err.code === 11000) {
+      errors.email = "Email is already used. ";
+      res.status(500).render("auth/signup", { data, errors });
     } else {
-      next(error);
+      next(err);
     }
   }
 });
@@ -94,7 +98,6 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
     const reservations = await reservationController.getAllReservations();
     const orderController = new OrderController(currentUser._id);
     const orders = await orderController.getAllOrders();
-   
 
     console.log(reservations);
     res.render("auth/profile", {
@@ -106,6 +109,5 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
-
 
 module.exports = router;

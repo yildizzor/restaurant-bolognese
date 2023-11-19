@@ -24,40 +24,48 @@
 </div>
       <div class="col-12">
         <input
-          class="form-control form-control-lg"
+          class="form-control form-control-lg {{#if errors.name}}is-invalid{{/if}}"
           id="name"
           type="text"
           name="name"
+          value="{{#if data.name}}{{data.name}}{{/if}}"
           placeholder="Name Surname"
           aria-describedby="nameError"
           required
         />
-        <div id="nameError" class="invalid-feedback">
-          Name and Surname is required!
-        </div>
+      <div id="nameError" class="invalid-feedback">
+        {{#if errors.name}}
+        {{errors.name}}
+        {{else}}
+        Name and Surname is required
+        {{/if}}
+      </div>
 
       </div>
 
       <div class="col-12">
         <input
-          class="form-control form-control-lg"
+          class="form-control form-control-lg {{#if errors.email}}is-invalid{{/if}}"
           id="email-addres"
           type="email"
           name="email"
+          value="{{#if data.email}}{{data.email}}{{/if}}"
           placeholder="Email Address"
           aria-describedby="emailError"
           required
         />
         <div id="emailError" class="invalid-feedback">
-          Email is not valid!
-
+          {{#if errors.email}}
+          {{errors.email}}
+          {{else}}
+          Email address is not valid
+          {{/if}}
         </div>
-
       </div>
 
       <div class="col-12">
         <input
-          class="form-control form-control-lg"
+          class="form-control form-control-lg {{#if errors.password}}is-invalid{{/if}}"
           id="password"
           type="password"
           name="password"
@@ -67,51 +75,30 @@
           required
         />
         <div id="passwordError" class="invalid-feedback">
-
-          Consist of at least 1 lower, 1 upper, 1 digit, 1 any character and min
-          6 characters.
-
+          {{#if errors.password}}
+          {{errors.password}}
+          {{else}}
+          Password should consist of at least 1 lower, 1 upper, 1 digit, 1 any character and min 6 characters.
+          {{/if}}
         </div>
-
       </div>
 
       <div class="col-12">
         <input
-          class="form-control form-control-lg"
+          class="form-control form-control-lg {{#if errors.address}}is-invalid{{/if}}"
           id="address"
           type="text"
           name="address"
           placeholder="Address"
+          value="{{#if data.address}}{{data.address}}{{/if}}"
+          aria-describedby="addressError"
         />
-
-      </div>
-
-      <div class="col-12">
-
-        <input
-          class="form-control form-control-lg"
-          id="city"
-          type="text"
-          name="city"
-          placeholder="City"
-        />
-
-      </div>
-
-      <div class="col-12">
-        <input
-          class="form-control form-control-lg"
-          id="zip-code"
-          type="text"
-          name="zipCode"
-          placeholder="Zip Code"
-          pattern="^\d{4}[A-Z]{2}$"
-          aria-describedby="zipcodeError"
-        />
-        <div id="zipcodeError" class="invalid-feedback">
-
-          Zip Code should consist of 2 upper letters followed by 4 digits.
-
+        <div id="addressError" class="invalid-feedback">
+          {{#if errors.address}}
+          {{errors.address}}
+          {{else}}
+          Invalid Address
+          {{/if}}
         </div>
 
       </div>
@@ -119,17 +106,62 @@
       <div class="col-12">
 
         <input
-          class="form-control form-control-lg"
+          class="form-control form-control-lg {{#if errors.city}}is-invalid{{/if}}"
+          id="city"
+          type="text"
+          placeholder="City"
+          value="{{#if data.city}}{{data.city}}{{/if}}"
+          name="city"
+          aria-describedby="cityError"
+        />
+        <div id="cityError" class="invalid-feedback">
+          {{#if errors.city}}
+          {{errors.city}}
+          {{else}}
+          Invalid City name
+          {{/if}}
+        </div>
+
+      </div>
+
+      <div class="col-12">
+        <input
+          class="form-control form-control-lg {{#if errors.zipCode}}is-invalid{{/if}}"
+          id="zip-code"
+          type="text"
+          name="zipCode"
+          value="{{#if data.zipCode}}{{data.zipCode}}{{/if}}"
+          placeholder="Zip Code"
+          pattern="^\d{4}[A-Z]{2}$"
+          aria-describedby="zipCodeError"
+        />
+        <div id="zipCodeError" class="invalid-feedback">
+          {{#if errors.zipCode}}
+          {{errors.zipCode}}
+          {{else}}
+          Zip Code should consist of 2 upper letters followed by 4 digits.
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="col-12">
+
+        <input
+          class="form-control form-control-lg {{#if errors.phoneNr}}is-invalid{{/if}}"
           id="phone-number"
           type="text"
           name="phoneNr"
+          value="{{#if data.phoneNr}}{{data.phoneNr}}{{/if}}"
           placeholder="Phone Number"
           pattern="^(\+|00)[0-9]{1,3}[0-9]{4,14}(?:x.+)?$"
-          aria-describedby="phonenrError"
+          aria-describedby="phoneNrError"
         />
-
-        <div id="phonenrError" class="invalid-feedback">
+        <div id="phoneNrError" class="invalid-feedback">
+          {{#if errors.phoneNr}}
+          {{errors.phoneNr}}
+          {{else}}
           Phone-number is not valid!
+          {{/if}}
         </div>
 
       </div>
