@@ -1,9 +1,102 @@
-<div class="container pt-5">
-<div>
-  <img class="rounded-circle shadow-4-strong" src="{{currentUser.imageUrl}}" alt="profile-photo" width="250"/>
-  </div>
-<div class="pt-3">
+<div class="container pt-1">
+  <div class="row">
+ <div class="col-md-3 col-sm-12">
+  <img class="rounded-circle shadow-4-strong" src="{{currentUser.imageUrl}}" alt="profile-photo" width="200"/>
+  </div> 
+ <div class="pt-3 col-md-9 col-sm-12">
   {{> profilePartial currentUser}}
+</div> 
+</div>
+{{!-- This is reservation history --}}
+<div class="accordion">
+    <h6 style="color:blue;">Your Reservations</h6>
+  {{#each reservations}}
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{@index}}"
+      aria-expanded="false" aria-controls="panelsStayOpen-collapse{{@index}}">
+       Reservation
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapse{{@index}}" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Person</th>
+              <th scope="col">Cancel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>     
+              <td><span class="simply-date">{{this.formattedDate}}</span></td>
+              <td>{{this.time}}</td>
+              <td>{{this.person}}</td>
+              <td>
+                <form method="POST" action="/reservation/delete/{{this._id}}">
+                  <button class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  {{/each}}
 </div>
 
+{{!-- This is order history --}}
+
+<div class="accordion pt-5">
+    <h6 style="color:blue;">Your Orders</h6>
+  {{#each orders}}
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse-order{{@index}}"
+      aria-expanded="false" aria-controls="panelsStayOpen-collapse-order{{@index}}">
+      Order on {{this.formattedDate}}
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapse-order{{@index}}" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">SubTotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each this.items}}
+              <tr>     
+                <td>{{this.product.title}}</td>
+                <td>{{this.quantity}}</td>
+                <td>{{this.subTotal}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+       
+        <div class="text-end">
+            <h5>Order Total: {{this.total}}-Euro</h5>
+           <h6>Order Status: {{this.status}}</h6>
+          {{#if this.cancallable }}
+          <form method="POST" action="/order/cancel/{{this._id}}">
+            <button class="btn btn-danger">Cancel Order</button>
+          </form>
+          {{/if}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
 </div>

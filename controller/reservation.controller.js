@@ -16,6 +16,18 @@ class ReservationController {
   async delete(reservationId) {
     await Reservation.findByIdAndDelete(reservationId);
   }
+
+  async getAllReservations() {
+    const reservations = await Reservation.find({ user: this.userId });
+    reservations.forEach(
+      (reservation) =>
+        (reservation.formattedDate = reservation.date
+          .toISOString()
+          .split("T")[0])
+    );
+    console.log(reservations);
+    return reservations;
+  }
 }
 
 module.exports = ReservationController;

@@ -15,7 +15,6 @@ const hbs = require("hbs");
 
 const app = express();
 
-
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 require("./config/session.config")(app);
@@ -44,6 +43,9 @@ app.use("/", orderRoutes);
 
 const reservationRoutes = require("./routes/reservation.routes");
 app.use("/", reservationRoutes);
+
+const reviewsRoutes = require("./routes/reviews.routes");
+app.use("/", reviewsRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

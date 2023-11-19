@@ -76,12 +76,38 @@
               class="nav-link"
               style="color: #1c3bd7"
               href="/order"
-            >Order<i class='fa fa-shopping-cart' style='color:#0f2dd9'></i>{{orderItemsCount}}</a></li>
+            >Order<i
+                class="fa fa-shopping-cart"
+                style="color:#0f2dd9"
+              ></i>{{orderItemsCount}}</a></li>
           <li class="nav-item px-3"><a
               class="nav-link active"
               style="color:#1c3bd7"
               href="/reservation"
             >Reservation</a></li>
+
+          <li class="nav-item nav-item dropdown px-3">
+            <a
+              class="nav-link active dropdown-toggle"
+              data-bs-toggle="dropdown"
+              role="button"
+              aria-expanded="false"
+              style="color: #1c3bd7"
+            >Reviews</a>
+
+            <ul class="dropdown-menu">
+              <li><a
+                  class="dropdown-item"
+                  style="color: #1c3bd7"
+                  href="/reviews"
+                >Read Reviews</a></li>
+              <li><a
+                  class="dropdown-item"
+                  style="color: #1c3bd7"
+                  href="/review/add"
+                >Add Review</a></li>
+            </ul>
+          </li>
           <li class="nav-item px-3"><a
               class="nav-link"
               style="color: #1c3bd7"

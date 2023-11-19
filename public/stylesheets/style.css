@@ -118,3 +118,20 @@ footer {
   font-size: medium;
   font-family: "Times New Roman", Times, serif;
 }
+
+
+.rating-container {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.rating-star {
+  font-size: 2rem;
+  color: #e76ce4;
+  cursor: pointer;
+}
+
+.rating-star:hover,
+.rating-star.active {
+  color: #af179b;
+}

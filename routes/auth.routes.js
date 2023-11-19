@@ -2,6 +2,10 @@ const bcryptjs = require("bcryptjs");
 const router = require("express").Router();
 const saltRounds = 10;
 const User = require("../models/User.model");
+const Reservation = require("../models/Reservation.model");
+const ReservationController = require("../controller/reservation.controller");
+const Order = require("../models/Order.model");
+const OrderController = require("../controller/order.controller");
 const mongoose = require("mongoose");
 
 const uploader = require("../middelwares/cloudinary.config");
@@ -24,7 +28,7 @@ router.post("/login", async (req, res, next) => {
         res.locals.isLoggedIn = foundUser !== undefined;
         res.locals.isLoggedOut = foundUser === undefined;
 
-        res.render("auth/profile", { currentUser: foundUser });
+        res.redirect("/profile");
       } else {
         res.render("auth/login", { errorMessage: "Incorrect password." });
       }
@@ -50,14 +54,13 @@ router.post("/signup", uploader.single("imageUrl"), async (req, res, next) => {
       let profilePhoto;
       if (req.file) {
         profilePhoto = req.file.path;
-        console.log(profilePhoto);
       }
       const newUser = await User.create({
         ...req.body,
         password: hashedPassword,
         imageUrl: profilePhoto,
       });
-      res.redirect("/profile");
+      res.redirect("/login");
     } else {
       res.render("auth/signup", { errorMessage: "Username already taken" });
     }
@@ -67,7 +70,6 @@ router.post("/signup", uploader.single("imageUrl"), async (req, res, next) => {
         .status(400)
         .render("auth/signup", { errorMessage: error.errors.message });
     } else if (error.code === 11000) {
-      console.log(error);
       res.status(500).render("auth/signup", {
         errorMessage: "Email is already used.",
       });
@@ -85,10 +87,25 @@ router.get("/logout", async (req, res, next) => {
   });
 });
 
-router.get("/profile", isLoggedIn, (req, res) => {
-  const currentUser = req.session.currentUser;
+router.get("/profile", isLoggedIn, async (req, res, next) => {
+  try {
+    const currentUser = req.session.currentUser;
+    const reservationController = new ReservationController(currentUser._id);
+    const reservations = await reservationController.getAllReservations();
+    const orderController = new OrderController(currentUser._id);
+    const orders = await orderController.getAllOrders();
+   
 
-  res.render("auth/profile", { currentUser });
+    console.log(reservations);
+    res.render("auth/profile", {
+      currentUser: currentUser,
+      reservations: reservations,
+      orders: orders,
+    });
+  } catch (error) {
+    next(error);
+  }
 });
+
 
 module.exports = router;

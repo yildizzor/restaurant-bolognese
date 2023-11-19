@@ -6,7 +6,7 @@ const ReservationController = require("../controller/reservation.controller");
 
 router.get(
   "/reservation",
-  /*isLoggedIn,*/ async (req, res, next) => {
+  isLoggedIn, async (req, res, next) => {
     let currentUser = req.session.currentUser;
     res.render("dishes/reservation", { currentUser });
   }
@@ -14,19 +14,15 @@ router.get(
 
 router.post(
   "/reservation",
-  /*isLoggedIn,*/ async (req, res, next) => {
+  isLoggedIn, async (req, res, next) => {
     try {
       const currentUser = req.session.currentUser;
 
       if (!currentUser) {
         throw new CustomError("You need to login to make an reservation");
       }
-
-      console.log(req.body);
-      console.log(currentUser);
       const reservationController = new ReservationController(currentUser._id);
       const reservation = await reservationController.create(req.body);
-      console.log(reservation);
 
       let message = reservation
         ? "Your reservation is confirmed. Thank You!"
@@ -37,5 +33,16 @@ router.post(
     }
   }
 );
+router.post("/reservation/delete/:id", async (req, res, next) => {
+  try {
+    const { id: reservationId } = req.params;
+    const currentUser = req.session.currentUser;
+    const reservationController = new ReservationController(currentUser._id);
+    await reservationController.delete(reservationId);
+    res.redirect("/profile");
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;

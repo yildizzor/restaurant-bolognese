@@ -6,7 +6,7 @@ const dishSchema = new Schema(
     // TODO: write the schema
     title: { type: String, required: true, unique: true },
 
-    ingredients: { type: [String] },
+    ingredients: { type: [String], default: "Not Available", required: true },
     cuisine: { type: String, required: true },
     dishType: {
       type: String,
@@ -21,11 +21,13 @@ const dishSchema = new Schema(
         "dessert",
         "other",
       ],
+      required: true,
     },
     image: {
       type: String,
+      required: true,
     },
-    price: { type: Number },
+    price: { type: Number, required: true},
   },
 
   {
