@@ -15,7 +15,6 @@ Users can sign-up to the restaurant web site, order dishes, save favorite dishes
 User needs to register to the web site to be able to give order and/or make reservation. User needs to provide the following information:
 
 - Name and Surname
-- Username
 - Email
 - Password
 - Address
@@ -24,14 +23,6 @@ User needs to register to the web site to be able to give order and/or make rese
 #### Name and Surname
 
 1. Name of a user is mandatory during Sign Up.
-
-#### Username
-
-1. username can be consist of combination of _Upper_ characters, _Lower_ characters, _digits_, and the following characters: "\_", "-".
-2. The length should be minimum 4 characters.
-3. username should start with Upper or Lower characters.
-4. username cannot be changed through "User Profile" page.
-5. username should be unique in the database.
 
 #### Email
 
