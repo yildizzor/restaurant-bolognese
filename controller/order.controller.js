@@ -125,9 +125,12 @@ class OrderController {
   }
 
   async getAllOrders() {
-    const orders = await Order.find({ status: { $ne: "Ordering" } }).populate(
-      "items.product"
-    ).sort({'date': -1});
+    const orders = await Order.find({
+      status: { $ne: "Ordering" },
+      user: this.userId,
+    })
+      .populate("items.product")
+      .sort({ date: -1 });
     orders.forEach((order) => {
       order.cancallable = order.status === "Pending";
       order.formattedDate = order.date.toISOString().split("T")[0];
