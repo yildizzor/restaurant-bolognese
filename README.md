@@ -4,7 +4,7 @@ The project aims to provide “Restaurant Bolognese” website to serve its cust
 
 ## Live Site
 
-Web site is deployed into "https://****\*\*****.com" and can be accessible through [this link]("https://localhost:3000").
+Web site is deployed into "adaptable.app" web site and can be accessible through [this link]("https://restaurant-bolognese.adaptable.app").
 
 ## Users
 
@@ -35,21 +35,16 @@ User needs to register to the web site to be able to give order and/or make rese
 1. password can be consist of combination of _Upper_ characters, _Lower_ characters, _digits_, and the following characters: "\_-?!=+-.".
 2. password should be minimum 6 charactes.
 3. password should contain at least 1 uppercase, 1 lowercase and 1 digit.
-4. password can be changed through "User Profile" page.
 
 ### Sign In
 
-After sign up, user is able to authenticate via username/password fields.
-
-After 3 failure attempts, Captcha will appears for the user to prevent robot attacks.
+After sign up, user is able to authenticate via email/password fields.
 
 ### Profile
 
-Every registered user has own Profile page. It provides information about the users likes, dislikes, history of orders.
+Every registered user has own Profile page.
 
-User can change some personal information through Profile page like Email, Password and Address.
-
-User can upload pictures or choose avatars provided by the system in Profile page.
+User can upload pictures during sign up.
 
 ## Tech-Stack
 
