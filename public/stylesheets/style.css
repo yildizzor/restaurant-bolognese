@@ -119,7 +119,6 @@ footer {
   font-family: "Times New Roman", Times, serif;
 }
 
-
 .rating-container {
   display: inline-block;
   margin-bottom: 1rem;
@@ -134,4 +133,22 @@ footer {
 .rating-star:hover,
 .rating-star.active {
   color: #af179b;
+}
+
+.thumb {
+  cursor: pointer !important;
+  outline: 0 !important;
+  color: #aaa !important;
+}
+
+.thumb:focus {
+  outline: none !important;
+}
+
+.green {
+  color: rgb(34, 194, 45) !important;
+}
+
+.red {
+  color: red !important;
 }

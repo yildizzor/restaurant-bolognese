@@ -22,6 +22,16 @@ const reviewSchema = new Schema({
     maxLength: 300,
     required: true,
   },
+
+  likes: {
+    type: Number,
+    default: 0,
+  },
+
+  dislikes: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Review = model("Review", reviewSchema);

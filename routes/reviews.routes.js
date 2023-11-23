@@ -27,7 +27,6 @@ router.get("/review/add", (req, res, next) => {
 router.post("/review/add", async (req, res, next) => {
   try {
     const data = req.body;
-    console.log(data);
 
     await Review.create(data);
     res.redirect("/reviews");
@@ -35,4 +34,31 @@ router.post("/review/add", async (req, res, next) => {
     next(error);
   }
 });
+
+router.get("/reviews/like/:id", async (req, res, next) => {
+  try {
+    const reviewId = req.params.id;
+
+    const review = await Review.findById(reviewId);
+    review.likes += 1;
+    await review.save();
+    res.redirect("/reviews");
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/reviews/dislike/:id", async (req, res, next) => {
+  try {
+    const reviewId = req.params.id;
+
+    const review = await Review.findById(reviewId);
+    review.dislikes += 1;
+    await review.save();
+    res.redirect("/reviews");
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

@@ -4,7 +4,7 @@ The project aims to provide “Restaurant Bolognese” website to serve its cust
 
 ## Live Site
 
-Web site is deployed into "adaptable.app" web site and can be accessible through [this link]("https://restaurant-bolognese.adaptable.app").
+Web site is deployed into "adaptable.app" web site and can be accessible through [this link](https://restaurant-bolognese.adaptable.app).
 
 ## Users
 

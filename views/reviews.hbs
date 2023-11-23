@@ -4,9 +4,10 @@
       <h3 class="mb-4" style="color:blue">Customer Reviews</h3>
     </div>
   </div>
+
   <div class="row text-center">
     {{#each reviews}}
-      <div class="col-md-4 mb-5 mb-md-0">
+      <div class="col-md-4 mb-5 mb-sm-2 mb-md-5">
         <p class="fs-6 fw-light">{{this.formattedDate}}</p>
         <h5 class="mb-3">{{this.name}}</h5>
         <p class="px-xl-3">
@@ -17,8 +18,25 @@
         <p class="customer-rating">
           {{this.rating}}
         </p>
+        <div>
+          <span>
+            {{this.likes}}
+          </span>
+          <a class="btn thumb thumb-up" id="up-link-{{this._id}}" href="/reviews/like/{{this._id}}"><i
+              class="fa fa-thumbs-up fa-lg"
+              aria-hidden="true"
+            ></i><a/>
+           <a class="btn thumb thumb-down" id="down-link-{{this._id}}" href="/reviews/dislike/{{this._id}}"><i
+              class="fa fa-thumbs-down fa-lg"
+              aria-hidden="true"
+            ></i></a>
+          <span>
+            {{this.dislikes}}
+          </span>
+        </div>
 
       </div>
+
     {{/each}}
   </div>
 </section>
