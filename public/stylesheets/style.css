@@ -1,5 +1,4 @@
 body {
-  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -39,7 +38,7 @@ footer {
 
 .background-pizza {
   width: 100vw;
-  height: 82vh;
+  min-height: 80vh;
   background-size: cover;
 
   background-repeat: no-repeat;

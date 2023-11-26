@@ -20,139 +20,156 @@
   </head>
 
   <body>
-    <nav
-      class="navbar navbar-expand-lg"
-      style="background-color: #d3f0f5; height: 18vh;"
-    >
+    <nav class="navbar navbar-expand-xl" style="background-color: #d3f0f5;">
       <div class="container-fluid">
-        <img
-          src="/images/home/logo1.png"
-          style="height: 17vh"
-          alt="Restaurant Logo"
-        />
-        <ul class="nav navbar-nav mx-auto fs-3 fst-italic mb-2 mb-lg-0">
-          <li class="nav-item px-3"><a
-              class="nav-link"
-              style="color: #1c3bd7"
-              href="/"
-            >Home</a></li>
-          <li class="nav-item px-3"><a
-              class="nav-link"
-              style="color: #1c3bd7"
-              href="/about"
-            >About Us</a></li>
+        <a class="navbar-brand" href="#">
+          <img
+            src="/images/home/logo1.png"
+            style="max-height: 16vh; min-height: 10vh;"
+            class="d-inline-block align-text-top m2"
+            alt="Restaurant Logo"
+          />
+        </a>
 
-          <li class="nav-item nav-item dropdown px-3">
-            <a
-              class="nav-link active dropdown-toggle"
-              data-bs-toggle="dropdown"
-              role="button"
-              aria-expanded="false"
-              style="color: #1c3bd7"
-              href="/menu"
-            >Menu</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <ul class="dropdown-menu">
-              <li><a
-                  class="dropdown-item"
-                  style="color: #1c3bd7"
-                  href="/menu"
-                >Dishes and Drinks</a></li>
-              <li><a
-                  class="dropdown-item"
-                  style="color: #1c3bd7"
-                  href="/menu/dishes"
-                >Dishes</a></li>
-              <li><a
-                  class="dropdown-item"
-                  style="color: #1c3bd7"
-                  href="/menu/drinks"
-                >Drinks</a></li>
-            </ul>
+        <div class="collapse navbar-collapse" id="navbarNav">
 
-          </li>
-
-          <li class="nav-item px-3"><a
-              class="nav-link"
-              style="color: #1c3bd7"
-              href="/order"
-            >Order<i
-                class="fa fa-shopping-cart"
-                style="color:#0f2dd9"
-              ></i>{{orderItemsCount}}</a></li>
-          <li class="nav-item px-3"><a
-              class="nav-link active"
-              style="color:#1c3bd7"
-              href="/reservation"
-            >Reservation</a></li>
-
-          <li class="nav-item nav-item dropdown px-3">
-            <a
-              class="nav-link active dropdown-toggle"
-              data-bs-toggle="dropdown"
-              role="button"
-              aria-expanded="false"
-              style="color: #1c3bd7"
-            >Reviews</a>
-
-            <ul class="dropdown-menu">
-              <li><a
-                  class="dropdown-item"
-                  style="color: #1c3bd7"
-                  href="/reviews"
-                >Read Reviews</a></li>
-              <li><a
-                  class="dropdown-item"
-                  style="color: #1c3bd7"
-                  href="/review/add"
-                >Add Review</a></li>
-            </ul>
-          </li>
-          <li class="nav-item px-3"><a
-              class="nav-link"
-              style="color: #1c3bd7"
-              href="/contact"
-            >Contact</a></li>
-
-          {{#if isLoggedOut}}
+          <ul class="navbar-nav mx-auto fs-3 fst-italic mb-2 mb-lg-0">
+            <li class="nav-item px-3"><a
+                class="nav-link active"
+                style="color: #1c3bd7"
+                href="/"
+                aria-current="page"
+              >Home</a></li>
             <li class="nav-item px-3"><a
                 class="nav-link"
-                style="color:#1c3bd7"
-                href="/signup"
-              >Sign up</a></li>
+                style="color: #1c3bd7"
+                href="/about"
+              >About Us</a></li>
 
-            <li class="nav-item px-3"><a
-                class="nav-link"
-                style="color:#1c3bd7"
-                href="/login"
-              >Login</a></li>
-          {{/if}}
-
-          {{#if isLoggedIn}}
-            <li class="nav-item nav-item dropdown px-3">
+            <li class="nav-item dropdown px-3">
               <a
-                class="nav-link active dropdown-toggle"
+                class="nav-link dropdown-toggle"
                 data-bs-toggle="dropdown"
                 role="button"
                 aria-expanded="false"
                 style="color: #1c3bd7"
                 href="/menu"
-              >User</a>
+              >Menu</a>
+
               <ul class="dropdown-menu">
                 <li><a
                     class="dropdown-item"
                     style="color: #1c3bd7"
-                    href="/profile"
-                  >Profile</a></li>
+                    href="/menu"
+                  >Dishes and Drinks</a></li>
                 <li><a
                     class="dropdown-item"
                     style="color: #1c3bd7"
-                    href="/logout"
-                  >Logout</a></li>
+                    href="/menu/dishes"
+                  >Dishes</a></li>
+                <li><a
+                    class="dropdown-item"
+                    style="color: #1c3bd7"
+                    href="/menu/drinks"
+                  >Drinks</a></li>
+              </ul>
+
+            </li>
+
+            <li class="nav-item px-3"><a
+                class="nav-link"
+                style="color: #1c3bd7"
+                href="/order"
+              >Order<i
+                  class="fa fa-shopping-cart"
+                  style="color:#0f2dd9"
+                ></i>{{orderItemsCount}}</a></li>
+            <li class="nav-item px-3"><a
+                class="nav-link"
+                style="color:#1c3bd7"
+                href="/reservation"
+              >Reservation</a></li>
+
+            <li class="nav-item dropdown px-3">
+              <a
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                role="button"
+                aria-expanded="false"
+                style="color: #1c3bd7"
+              >Reviews</a>
+
+              <ul class="dropdown-menu">
+                <li><a
+                    class="dropdown-item"
+                    style="color: #1c3bd7"
+                    href="/reviews"
+                  >Read Reviews</a></li>
+                <li><a
+                    class="dropdown-item"
+                    style="color: #1c3bd7"
+                    href="/review/add"
+                  >Add Review</a></li>
               </ul>
             </li>
-          {{/if}}
-        </ul>
+            <li class="nav-item px-3"><a
+                class="nav-link"
+                style="color: #1c3bd7"
+                href="/contact"
+              >Contact</a></li>
+
+            {{#if isLoggedOut}}
+              <li class="nav-item px-3"><a
+                  class="nav-link"
+                  style="color:#1c3bd7"
+                  href="/signup"
+                >Sign up</a></li>
+
+              <li class="nav-item px-3"><a
+                  class="nav-link"
+                  style="color:#1c3bd7"
+                  href="/login"
+                >Login</a></li>
+            {{/if}}
+
+            {{#if isLoggedIn}}
+              <li class="nav-item dropdown px-3">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  role="button"
+                  aria-expanded="false"
+                  style="color: #1c3bd7"
+                  href="/menu"
+                >User</a>
+                <ul class="dropdown-menu">
+                  <li><a
+                      class="dropdown-item"
+                      style="color: #1c3bd7"
+                      href="/profile"
+                    >Profile</a></li>
+                  <li><a
+                      class="dropdown-item"
+                      style="color: #1c3bd7"
+                      href="/logout"
+                    >Logout</a></li>
+                </ul>
+              </li>
+            {{/if}}
+          </ul>
+        </div>
       </div>
     </nav>
     {{{body}}}
