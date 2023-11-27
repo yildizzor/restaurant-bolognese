@@ -1,0 +1,130 @@
+<div class="container w-50 mt-5">
+  <h2 class="mb-4">Add New Product</h2>
+  <form
+    class="needs-validation"
+    novalidate
+    action="/menu/product"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        id="title"
+        name="title"
+        value="{{#if data.title}}{{data.title}}{{/if}}"
+        placeholder="Enter product title"
+        aria-describedby="titleError"
+        required
+      />
+      <div id="titleError" class="invalid-feedback">
+        {{#if errors.title}}
+          {{errors.title}}
+        {{else}}
+          Please enter a title
+        {{/if}}
+      </div>
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        id="ingredients"
+        value="{{#if data.ingredients}}{{data.ingredients}}{{/if}}"
+        name="ingredients"
+        placeholder="Enter ingredients (comma-separated)"
+        aria-describedby="ingredientsError"
+        required
+      />
+      <div id="ingredientsError" class="invalid-feedback">
+        {{#if errors.ingredients}}
+          {{errors.ingredients}}
+        {{else}}
+          Please enter ingredients as comma separated
+        {{/if}}
+      </div>
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        id="cuisine"
+        name="cuisine"
+        value="{{#if data.cuisine}}{{data.cuisine}}{{/if}}"
+        placeholder="Enter cuisine"
+        aria-describedby="cuisineError"
+        required
+      />
+      <div id="cuisineError" class="invalid-feedback">
+        {{#if errors.ingredients}}
+          {{errors.ingredients}}
+        {{else}}
+          Please enter a cuisine
+        {{/if}}
+      </div>
+    </div>
+    <div class="mb-3">
+      <select
+        class="form-select form-control-lg"
+        id="dishType"
+        name="dishType"
+        value="{{#if data.dishType}}{{data.dishType}}{{/if}}"
+        placeholder="Select a dish type"
+        aria-describedby="dishTypeError"
+        required
+      >
+        <option value="">Select a dish type</option>
+        <option value="main_course">Main Course</option>
+        <option value="pasta">Pasta</option>
+        <option value="pizza">Pizza</option>
+        <option value="soup">Soup</option>
+        <option value="snack">Snack</option>
+        <option value="salad">Salad</option>
+        <option value="drink">Drink</option>
+        <option value="dessert">Dessert</option>
+        <option value="other">Other</option>
+      </select>
+      <div id="dishTypeError" class="invalid-feedback">
+        {{#if errors.dishType}}
+          {{errors.dishType}}
+        {{else}}
+          Please select a dish type
+        {{/if}}
+      </div>
+    </div>
+    <div class="mb-3">
+      <input
+        type="number"
+        class="form-control form-control-lg"
+        id="price"
+        name="price"
+        value="{{#if data.price}}{{data.price}}{{/if}}"
+        min="0"
+        placeholder="Enter product price"
+        aria-describedby="priceError"
+        required
+      />
+      <div id="priceError" class="invalid-feedback">
+        {{#if errors.price}}
+          {{errors.price}}
+        {{else}}
+          Please enter a valid price
+        {{/if}}
+      </div>
+    </div>
+    <div class="mb-3">
+      <input
+        class="form-control form-control-lg"
+        id="name"
+        type="file"
+        name="imageUrl"
+        accept="image/png, image/jpeg, image/jpg"
+        required
+      />
+
+      <div class="invalid-feedback">Please enter a valid image URL.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+  </form>
+</div>
