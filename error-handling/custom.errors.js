@@ -5,5 +5,11 @@ class CustomError extends Error {
   }
 }
 
+class IsNotAdmin extends CustomError {
+  constructor(message) {
+    super(message);
+    this.name = this.constructor.name;
+  }
+}
 
-module.exports = { CustomError };
+module.exports = { CustomError, IsNotAdmin };

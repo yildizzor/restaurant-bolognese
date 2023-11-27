@@ -24,9 +24,7 @@ const userSchema = new Schema(
       ],
     },
     imageUrl: {
-
       type: String,
-
     },
 
     address: String,
@@ -41,6 +39,11 @@ const userSchema = new Schema(
     phoneNr: {
       type: Number,
       match: /^(\+|00)[0-9]{1,3}[0-9]{4,14}(?:x.+)?$/,
+    },
+    role: {
+      type: String,
+      enum: ["admin", "user"],
+      default: "user",
     },
   },
   {

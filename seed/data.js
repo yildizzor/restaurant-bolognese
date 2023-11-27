@@ -160,7 +160,6 @@ const dishes = [
     price: 19.5,
     image: "/images/pasta_photos/macaroni.jpg",
   },
-
   {
     title: "Mozzarella Penne Rosa",
     ingredients: [

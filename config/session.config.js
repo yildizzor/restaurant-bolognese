@@ -25,8 +25,10 @@ module.exports = (app) => {
   );
 
   app.use(async function (req, res, next) {
-    res.locals.isLoggedIn = req.session.currentUser !== undefined;
-    res.locals.isLoggedOut = req.session.currentUser === undefined;
+    const user = req.session.currentUser;
+    res.locals.isLoggedIn = user !== undefined;
+    res.locals.isLoggedOut = user === undefined;
+    res.locals.isAdmin = user && user.role === "admin";
     res.locals.currentRoute = req.url;
     if (res.locals.isLoggedIn) {
       const orderController = new OrderController(req.session.currentUser._id);
