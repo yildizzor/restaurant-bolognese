@@ -86,7 +86,18 @@ router.post(
         let productPhoto;
         if (req.file) {
           productPhoto = req.file.path;
+
+          // Add Cloudinary transformations to the URL for better look&feel with bootstrap card
+          const arr = productPhoto.split("/");
+          arr.splice(
+            arr.length - 2,
+            0,
+            "w_562,dpr_2,ar_263:126,c_fill",
+            "f_auto,q_auto"
+          );
+          productPhoto = arr.join("/");
         }
+
         const newDish = await Dish.create({
           ...req.body,
           ingredients: req.body.ingredients
